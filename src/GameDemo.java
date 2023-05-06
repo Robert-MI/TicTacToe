@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class GameDemo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("welcome to ticktacktoe");
+        System.out.println("welcome to TicTacToe");
         while (true){
             System.out.println("For multiplayer press M");
             System.out.println("For single player press S");
