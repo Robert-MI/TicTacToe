@@ -40,40 +40,49 @@ public class Bot extends Player{
     public String getMove(Board board) {
         switch (difficulty){
             case EASY:
-                return easy(board);
+                return easy();
             case MEDIUM:
-                return medium();
+                return medium(board);
             case HARD:
                 return hard(board);
             default:
                 throw new RuntimeException("no such difficulty");
         }
     }
-    private String easy(Board board){
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board.getGameBoard()[i][j] == 0){
-                    board.printBoard();
-                    String row = "" + (i + 1);
-                    String column = "" + (j + 1);
-                    return row + column;
-                }
-            }
-        }
-        return String.valueOf(33);
-    }
-    private String medium(){
+    private String easy(){
+        // Random
         Random random = new Random();
         String row = "" + (random.nextInt(3) + 1);
         String column = "" + (random.nextInt(3) + 1);
         return row + column;
     }
+    private String medium(Board board){
+        if (board.getGameBoard()[1][1] == 0){
+            // Take middle
+            return "22";
+        }if (board.getGameBoard()[0][0] == 0){
+            // Take left upper corner
+            return "11";
+        }else if (board.getGameBoard()[0][2] == 0){
+            // Take right upper corner
+            return "13";
+        }else if (board.getGameBoard()[2][0] == 0){
+            // Take left lower corner
+            return "31";
+        }else if (board.getGameBoard()[2][2] == 0){
+            // Take right lower corner
+            return "33";
+        }else {
+            // Random(easy)
+            return easy();
+        }
+    }
     private String hard(Board board){
-        //Check for winning positions
+        // Check for winning positions
         if (!checkForWinning(this.getMarker(),board).equals("")){
             return checkForWinning(this.getMarker(),board);
         }
-        //check winning positions for opponent
+        // check winning positions for opponent
         char marker2;
         if (this.getMarker() == 'X'){
             marker2 = 'O';
@@ -81,23 +90,14 @@ public class Bot extends Player{
             marker2 = 'X';
         }
         if (!checkForWinning(marker2,board).equals("")){
+            // if opponent has winning position, close that position
             return checkForWinning(marker2,board);
         }
-        if (board.getGameBoard()[1][1] == 0){
-            // Take middle
-            return "22";
-        }if (board.getGameBoard()[0][0] == 0){
-            // Take left corner
-            return "11";
-        }else {
-            //Random
-            Random rand = new Random();
-            String row = "" + (rand.nextInt(3) + 1);
-            String column = "" + (rand.nextInt(3) + 1);
-            return row + column;
-        }
+        // otherwise look for other moves
+        return medium(board);
     }
     private static String checkForWinning(char marker, Board board){
+        // for every open position checks if there is winning one
         String move = "";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
