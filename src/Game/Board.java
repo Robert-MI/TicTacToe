@@ -20,16 +20,12 @@ public class Board{
             row = Integer.parseInt(String.valueOf(move.charAt(0)));
             column = Integer.parseInt(String.valueOf(move.charAt(1)));
         }catch (NumberFormatException e){
-            System.out.println("1");
             return false;
         }
         if (row < 1 || row > 3 || column < 1 || column > 3){
-            System.out.println("2");
             return false;
         }
         if (gameBoard[row-1][column-1] != 0){
-            System.out.println(gameBoard[row-1][column-1]);
-            System.out.println("3");
             return false;
         }
         gameBoard[row-1][column-1] = player;

@@ -29,8 +29,10 @@ public class Game {
             System.out.println(current.getMarker() + " makes move");
             String move = current.getMove(board);
             while (!board.submitMove(move,current.getMarker())){
-                System.out.println("Invalid move, please try again");
-                System.out.println(current.getMarker() + " makes move");
+                if (!(current instanceof Bot)){
+                    System.out.println("Invalid move, please try again");
+                    System.out.println(current.getMarker() + " makes move");
+                }
                 move = current.getMove(board);
             }
             if (board.isWinner(current.getMarker())){
