@@ -1,7 +1,7 @@
 package Game;
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Movable {
     private char marker;
     private static int counter=0;
     private String name;
@@ -39,7 +39,7 @@ public class Player {
         Player player = (Player) o;
         return this.getMarker() == player.getMarker() && this.getName().equals(player.getName());
     }
-    char getMarker() {
+    public char getMarker() {
         return marker;
     }
 
@@ -52,13 +52,12 @@ public class Player {
     public void setMarker(char marker) {
         this.marker = marker;
     }
-    public static void setPlayerCounter(int number){
-        counter = number;
-    }
     public void setName(String name) {
         this.name = name;
     }
-
+    public static void setPlayerCounter(int number){
+        counter = number;
+    }
     @Override
     public String toString() {
         return "Player " + '\n' + "marker = " + this.getMarker() + '\n' + "name = " + this.getName();

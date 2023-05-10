@@ -2,8 +2,6 @@ import Game.Board;
 import Game.Bot;
 import Game.Game;
 import Game.Player;
-
-import java.util.Objects;
 import java.util.Scanner;
 
 public class GameDemo {

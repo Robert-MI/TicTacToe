@@ -1,57 +1,51 @@
 package Game;
 import java.util.Random;
-public class Bot extends Player{
+public class Bot implements Movable{
     public enum DIFFICULTY{
         EASY,
         MEDIUM,
         HARD
     }
     private static int counter=0;
+    private char marker = 'X';
+    private String name = "Bot";
     private DIFFICULTY difficulty = DIFFICULTY.EASY;
     public Bot() {
-        super('X',"Bot");
-        setPlayerCounter(getPlayerCounter()-1);
         counter++;
     }
     public Bot(char marker) {
-        super(marker,"Bot");
-        setPlayerCounter(getPlayerCounter()-1);
+        this.marker = marker;
         counter++;
     }
     public Bot(String name) {
-        super('X',name);
-        setPlayerCounter(getPlayerCounter()-1);
+        this.name = name;
         counter++;
     }
     public Bot(DIFFICULTY dif) {
-        super('X',"Bot");
         this.difficulty = dif;
-        setPlayerCounter(getPlayerCounter()-1);
         counter++;
     }
     public Bot(char marker, String name) {
-        super(marker,name);
-        setPlayerCounter(getPlayerCounter()-1);
+        this.marker = marker;
+        this.name = name;
         counter++;
     }
     public Bot(char marker, DIFFICULTY difficulty) {
-        super(marker);
+        this.marker = marker;
         this.difficulty = difficulty;
-        setPlayerCounter(getPlayerCounter()-1);
         counter++;
     }
 
     public Bot(String name, DIFFICULTY difficulty) {
-        super(name);
+        this.name = name;
         this.difficulty = difficulty;
-        setPlayerCounter(getPlayerCounter()-1);
         counter++;
     }
 
     public Bot(char marker, String name, DIFFICULTY dif) {
-        super(marker,name);
+        this.marker = marker;
+        this.name = name;
         difficulty = dif;
-        setPlayerCounter(getPlayerCounter()-1);
         counter++;
     }
     public String getMove(Board board) {
@@ -137,7 +131,20 @@ public class Bot extends Player{
     public static int getBotCounter() {
         return counter;
     }
+
+    public char getMarker() {
+        return marker;
+    }
+    public String getName() {
+        return name;
+    }
     public static void setBotCounter(int number) {
         counter = number;
+    }
+    public void setMarker(char marker) {
+        this.marker = marker;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }

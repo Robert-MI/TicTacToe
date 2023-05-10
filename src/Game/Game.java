@@ -1,8 +1,8 @@
 package Game;
 
 public class Game {
-    private Player player1;
-    private Player player2;
+    private Movable player1;
+    private Movable player2;
     private Board board;
 
     public Game() {
@@ -17,14 +17,14 @@ public class Game {
         this.board = board;
     }
 
-    public Game(Board board, Player player1, Player player2){
+    public Game(Board board, Movable player1, Movable player2){
         this.player1 = player1;
         this.player2 = player2;
         this.board = board;
     }
 
     public String playGame() {
-        Player current = player1;
+        Movable current = player1;
         while (true){
             System.out.println(current.getMarker() + " makes move");
             String move = current.getMove(board);
