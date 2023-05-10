@@ -6,36 +6,53 @@ public class Bot extends Player{
         MEDIUM,
         HARD
     }
+    private static int counter=0;
     private DIFFICULTY difficulty = DIFFICULTY.EASY;
     public Bot() {
         super('X',"Bot");
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public Bot(char marker) {
         super(marker,"Bot");
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public Bot(String name) {
         super('X',name);
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public Bot(DIFFICULTY dif) {
         super('X',"Bot");
         this.difficulty = dif;
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public Bot(char marker, String name) {
         super(marker,name);
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public Bot(char marker, DIFFICULTY difficulty) {
         super(marker);
         this.difficulty = difficulty;
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
 
     public Bot(String name, DIFFICULTY difficulty) {
         super(name);
         this.difficulty = difficulty;
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
 
     public Bot(char marker, String name, DIFFICULTY dif) {
         super(marker,name);
         difficulty = dif;
+        setPlayerCounter(getPlayerCounter()-1);
+        counter++;
     }
     public String getMove(Board board) {
         switch (difficulty){
@@ -116,5 +133,11 @@ public class Bot extends Player{
             }
         }
         return move;
+    }
+    public static int getBotCounter() {
+        return counter;
+    }
+    public static void setBotCounter(int number) {
+        counter = number;
     }
 }

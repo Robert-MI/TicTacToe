@@ -2,6 +2,8 @@ import Game.Board;
 import Game.Bot;
 import Game.Game;
 import Game.Player;
+
+import java.util.Objects;
 import java.util.Scanner;
 
 public class GameDemo {
@@ -70,5 +72,7 @@ public class GameDemo {
                 break;
             }
         }
+        System.out.println("Number of Players: " + Player.getPlayerCounter());
+        System.out.println("Number of Bots: " + Bot.getBotCounter());
     }
 }

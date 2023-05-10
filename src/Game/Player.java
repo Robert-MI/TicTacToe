@@ -1,26 +1,29 @@
 package Game;
-
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Player {
     private char marker;
+    private static int counter=0;
     private String name;
     public Player() {
         this.marker = 'X';
         this.name = "Player";
+        this.counter++;
     }
     public Player(String name) {
         this.marker = 'X';
         this.name = name;
+        this.counter++;
     }
     public Player(char marker) {
         this.marker = marker;
         this.name = "Player";
+        this.counter++;
     }
     public Player(char marker, String name) {
         this.marker = marker;
         this.name = name;
+        this.counter++;
     }
     public String getMove(Board board) {
         board.printBoard();
@@ -43,8 +46,14 @@ public class Player {
     public String getName() {
         return name;
     }
+    public static int getPlayerCounter(){
+        return counter;
+    }
     public void setMarker(char marker) {
         this.marker = marker;
+    }
+    public static void setPlayerCounter(int number){
+        counter = number;
     }
     public void setName(String name) {
         this.name = name;
